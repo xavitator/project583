@@ -89,7 +89,7 @@ public class EigenVectorCentrality {
 
     public void map(Object key, Text value, Context context
     ) throws IOException, InterruptedException {
-    	/* We set yhe graph with nodes and edges*/
+    	/* We set the graph with nodes and edges*/
       String[] line = value.toString().split(" ");
       node.set(Double.parseDouble(line[0]));
       for(int i =1 ;  i<line.length ;  i++ ){
@@ -111,8 +111,8 @@ public class EigenVectorCentrality {
     job.setReducerClass(IntSumReducer.class);
     job.setOutputKeyClass(DoubleWritable.class);
     job.setOutputValueClass(DoubleWritable.class);
-    FileInputFormat.addInputPath(job, new Path("Input"));
-    FileOutputFormat.setOutputPath(job, new Path("Output1"));
+    FileInputFormat.addInputPath(job, new Path("graph"));
+    FileOutputFormat.setOutputPath(job, new Path("output3"));
     job.waitForCompletion(true);
 
     job = Job.getInstance(conf, "EigenVector");
@@ -122,8 +122,8 @@ public class EigenVectorCentrality {
     job.setReducerClass(IntSumReducer.class);
     job.setOutputKeyClass(DoubleWritable.class);
     job.setOutputValueClass(DoubleWritable.class);
-    FileInputFormat.addInputPath(job, new Path("Input"));
-    FileOutputFormat.setOutputPath(job, new Path("Output2"));
+    FileInputFormat.addInputPath(job, new Path("graph"));
+    FileOutputFormat.setOutputPath(job, new Path("output4"));
     job.waitForCompletion(true);
 
   }
