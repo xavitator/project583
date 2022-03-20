@@ -88,6 +88,6 @@ public class EigenVectorCentrality implements Serializable
 		// Get the most important page
 		String page = labels.collectAsMap().get(maxEntry.getKey());
 
-		System.out.println("The most important page in Wikipedia is " + page);
+		System.out.println("The most important page in Wikipedia is : " + page);
     }
 }
