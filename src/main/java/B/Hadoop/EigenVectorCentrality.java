@@ -16,6 +16,8 @@ import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 
 
 public class EigenVectorCentrality {
@@ -102,7 +104,8 @@ public class EigenVectorCentrality {
 
   public static void main(String[] args) throws Exception {
 	  /* main function to execute the question about Eigenvectors centrality*/
-
+    Logger.getLogger("org").setLevel(Level.ERROR);
+    Logger.getLogger("akka").setLevel(Level.ERROR);
     Configuration conf = new Configuration();
     Job job = Job.getInstance(conf, "EigenVector");
     job.setJarByClass(EigenVectorCentrality.class);

@@ -1,5 +1,7 @@
 package B.Spark;
 
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.*;
 
@@ -12,6 +14,8 @@ public class EigenVectorCentrality implements Serializable
 {
     public static void main( String[] args )
     {
+		Logger.getLogger("org").setLevel(Level.ERROR);
+		Logger.getLogger("akka").setLevel(Level.ERROR);
     	//Initiate the input and output folders
     	String inputFile = "graph/edgelist.txt";
     	String outputFolder = "Output";
