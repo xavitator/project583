@@ -1,3 +1,5 @@
+package A;
+
 import org.apache.commons.io.filefilter.TrueFileFilter;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
