@@ -103,7 +103,7 @@ public class OneMapreduce {
 		conf.set("n", "64375");
 		conf.set("p", "1");
 		Job job1 = Job.getInstance(conf, "MatrixMultiplication");
-		job1.setJarByClass(PartB_3_Using_One_MapReduce.class);
+		job1.setJarByClass(OneMapreduce.class);
 		job1.setReducerClass(MatrixReducer.class);
 		job1.setOutputKeyClass(Text.class);
 		job1.setOutputValueClass(Text.class);
@@ -111,8 +111,8 @@ public class OneMapreduce {
 		job1.setInputFormatClass(TextInputFormat.class);
 		job1.setOutputFormatClass(TextOutputFormat.class);
 
-		MultipleInputs.addInputPath(job1, new Path("graph/edgelist.txt"), TextInputFormat.class, MatrixMapperVector.class);
-		MultipleInputs.addInputPath(job1, new Path("graph/vector.txt"), TextInputFormat.class, MatrixMapperMatrix.class);
+		MultipleInputs.addInputPath(job1, new Path("graph/vector.txt"), TextInputFormat.class, MatrixMapperVector.class);
+		MultipleInputs.addInputPath(job1, new Path("graph/edgelist.txt"), TextInputFormat.class, MatrixMapperMatrix.class);
 
 		FileSystem fs = FileSystem.get(conf);
 		if (fs.exists(new Path(outputFolder)))
@@ -122,6 +122,8 @@ public class OneMapreduce {
 		job1.waitForCompletion(true);
 	}
 public static void main(String args[]) throws ClassNotFoundException, IOException, InterruptedException {
-	matrixMultiplicationUsingOneMapReduce("graph","inputR","output1");
+	matrixMultiplicationUsingOneMapReduce("","","output1");
+	System.out.println("Done");
+
 }
 }

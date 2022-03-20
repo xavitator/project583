@@ -144,7 +144,7 @@ public class TwoMapreduce{
 	static void matrixMultiplicationUsingTwoMapReduce(String input, String inputR, String outputFolder)
 			throws IOException, ClassNotFoundException, InterruptedException {
 		Configuration conf = new Configuration();
-		// M is an m-by-n matrix; N is an n-by-p matrix.
+		// M is an m by n matrix; N is an n by p matrix.
 		conf.set("m", "64375");
 		conf.set("n", "64375");
 		conf.set("p", "1");
@@ -158,9 +158,9 @@ public class TwoMapreduce{
 		job1.setInputFormatClass(TextInputFormat.class);
 		job1.setOutputFormatClass(TextOutputFormat.class);
 
-		MultipleInputs.addInputPath(job1, new Path(inputR), TextInputFormat.class, MatrixMapperVector2_1.class);
+		MultipleInputs.addInputPath(job1, new Path("graph/edgelist.txt"), TextInputFormat.class, MatrixMapperVector2_1.class);
 
-		MultipleInputs.addInputPath(job1, new Path(input), TextInputFormat.class, MatrixMapperMatrix2_1.class);
+		MultipleInputs.addInputPath(job1, new Path("graph/vector.txt"), TextInputFormat.class, MatrixMapperMatrix2_1.class);
 
 		FileSystem fs = FileSystem.get(conf);
 		if (fs.exists(new Path("outputIntermediate")))

@@ -1,0 +1,7 @@
+Hadoop results :
+1 iteration : 20409
+2 iterations : 26200
+3 iterations : 20409
+4 iterations : 18990
+5 iterations : 20409
+6 iterations : 20409
